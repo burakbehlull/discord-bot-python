@@ -18,4 +18,16 @@ class BurakBehlul(commands.Bot):
             
 bot = BurakBehlul()
 
+for filename in os.listdir('./commands'):
+    if filename.endswith('.py') and filename != '__init__.py':
+        bot.initial_extensions.append(f'commands.{filename[:-3]}')
+
+for filename in os.listdir('./events'):
+    if filename.endswith('.py') and filename != '__init__.py':
+        bot.initial_extensions.append(f'events.{filename[:-3]}')
+        
+for filename in os.listdir('./prefixCommands'):
+    if filename.endswith('.py') and filename != '__init__.py':
+        bot.initial_extensions.append(f'prefixCommands.{filename[:-3]}')
+ 
 bot.run(config["token"])
